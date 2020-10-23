@@ -138,7 +138,7 @@ def register():
         password = request.form.get("password")
 
         # Check username does not already exist, else insert into users table
-        rows = db.execute("SELECT * FROM users where username = :username", username)
+        rows = db.execute("SELECT * FROM users where username = :username", username=username)
         if len(rows) > 0:
             return apology("Username already exists.", 403)
         else:
