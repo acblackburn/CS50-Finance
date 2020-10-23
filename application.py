@@ -147,6 +147,7 @@ def register():
 
         return redirect("/login")
     else:
+        # If GET request, render register template
         return render_template("register.html")
     
     
