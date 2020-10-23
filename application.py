@@ -137,15 +137,15 @@ def register():
         username = request.form.get("username")
         password = request.form.get("password")
 
-        # Check username does not already exist, else insert into users table
+        # Check username does not already exist
         rows = db.execute("SELECT * FROM users where username = :username", username=username)
-        if len(rows) > 0:
-            return apology("Username already exists.", 403)
-        else:
-            db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)",
-                       username=username, hash=generate_password_hash(password))
+        if len(rows) > 0: return apology("Username already exists.", 403)
 
+        # Insert new user into users table
+        db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)",
+                   username=username, hash=generate_password_hash(password))
 
+        return redirect("/login")
     else:
         return render_template("register.html")
     
