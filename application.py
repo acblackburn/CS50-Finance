@@ -122,6 +122,19 @@ def register():
     
     # Clear any current user session.
     session.clear()
+
+    if request.method == "POST":
+
+        # Ensure username was submitted
+        if not request.form.get("username"):
+            return apology("must provide username", 403)
+
+        # Ensure password was submitted
+        elif not request.form.get("password"):
+            return apology("must provide password", 403)
+        
+    else:
+        return render_template("register.html")
     
     
 
