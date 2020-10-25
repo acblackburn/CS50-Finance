@@ -4,11 +4,12 @@
     Stock Search
 {% endblock %}
 
-{% block body %}
+{% block main %}
     <h2>Search For a Stock</h2>
-    <form action="/register" method="post">
+    <form action="/quote" method="post">
         <div class="form-group">
             <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Stock Symbol" type="text">
         </div>
-    <button class="btn btn-primary" type="submit">Search</button>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
 {% endblock %}

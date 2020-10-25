@@ -4,6 +4,10 @@
     Quote
 {% endblock %}
 
-{% block body %}
-
+{% block main %}
+    <ul>
+        <li>{{ stock["name"] }}</li>
+        <li>{{ stock["symbol"] }}</li>
+        <li>{{ stock["price"] }}</li>
+    </ul>
 {% endblock %}

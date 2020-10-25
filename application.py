@@ -51,7 +51,11 @@ def index():
 @login_required
 def buy():
     """Buy shares of stock"""
-    return apology("TODO")
+
+    if session.method == "POST":
+        pass
+    else:
+        return render_template("buy.html")
 
 
 @app.route("/history")
@@ -114,7 +118,14 @@ def logout():
 def quote():
     """Get stock quote."""
     if request.method == "POST":
-        pass
+
+        # Ensure a stock is submitted
+        if not request.form.get("symbol"):
+            return apology("You must provide a stock.", 403)
+
+        stock_symbol = request.form.get("symbol")
+        stock = lookup(stock_symbol)
+        return render_template("quoted.html", stock)
     else:
         return render_template("quote.html")
 
@@ -123,7 +134,7 @@ def quote():
 def register():
     """Register new user."""
     
-    # Clear any current user session.
+    # Clear any current user session
     session.clear()
 
     if request.method == "POST":
