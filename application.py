@@ -52,7 +52,7 @@ def index():
 def buy():
     """Buy shares of stock"""
 
-    if session.method == "POST":
+    if request.method == "POST":
         pass
     else:
         return render_template("buy.html")
