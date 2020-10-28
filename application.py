@@ -53,7 +53,18 @@ def buy():
     """Buy shares of stock"""
 
     if request.method == "POST":
-        pass
+
+        # Ensure user provides a stock
+        if not request.form.get("symbol"):
+            return apology("You must provide a stock.", 403)
+
+        if not request.form.get("no_shares"):
+            return apology("You must specify number of shares to buy.", 403)
+
+        stock_symbol = request.form.get("symbol")
+        no_shares = request.form.get("no_shares")
+
+
     else:
         return render_template("buy.html")
 
